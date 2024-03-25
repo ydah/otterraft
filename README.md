@@ -1,39 +1,77 @@
 # Otterraft
 
-TODO: Delete this and the text below, and describe your gem
-
-Welcome to your new gem! In this directory, you'll find the files you need to be able to package up your Ruby library into a gem. Put your Ruby code in the file `lib/otterraft`. To experiment with that code, run `bin/console` for an interactive prompt.
+Simple [YAML Frontmatter](https://pandoc.org/MANUAL.html#extension-yaml_metadata_block) parser for Ruby.
 
 ## Installation
 
-TODO: Replace `UPDATE_WITH_YOUR_GEM_NAME_IMMEDIATELY_AFTER_RELEASE_TO_RUBYGEMS_ORG` with your gem name right after releasing it to RubyGems.org. Please do not do it earlier due to security reasons. Alternatively, replace this section with instructions to install your gem from git if you don't plan to release to RubyGems.org.
+Otterraft's installation is simple:
 
-Install the gem and add to the application's Gemfile by executing:
+```console
+gem install otterraft
+```
 
-    $ bundle add UPDATE_WITH_YOUR_GEM_NAME_IMMEDIATELY_AFTER_RELEASE_TO_RUBYGEMS_ORG
+If you'd rather install Otterraft using `bundler`, add a line for it in your Gemfile:
 
-If bundler is not being used to manage dependencies, install the gem by executing:
-
-    $ gem install UPDATE_WITH_YOUR_GEM_NAME_IMMEDIATELY_AFTER_RELEASE_TO_RUBYGEMS_ORG
+```ruby
+gem 'otterraft'
+```
 
 ## Usage
 
-TODO: Write usage instructions here
+Otterraft is a simple YAML Frontmatter parser for Ruby. It can be used to parse YAML Frontmatter from a string.
 
-## Development
+```ruby
+text = <<~MARKDOWN_TEXT
+---
+title: Hello, World!
+date: 2021-01-01 12:00 JST
+tags:
+- hello
+- world
+- ruby
+---
 
-After checking out the repo, run `bin/setup` to install dependencies. You can also run `bin/console` for an interactive prompt that will allow you to experiment.
+# Hello, World!
+Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+- First item
+- Second item
+MARKDOWN_TEXT
 
-To install this gem onto your local machine, run `bundle exec rake install`. To release a new version, update the version number in `version.rb`, and then run `bundle exec rake release`, which will create a git tag for the version, push git commits and the created tag, and push the `.gem` file to [rubygems.org](https://rubygems.org).
+Otterraft.parse(text)
+# => { "title" => "Hello, World!", "date" => "2021-01-01 12:00 JST", "tags" => ["hello", "world", "ruby"] }
+```
+
+Otterraft can also be used to parse YAML Frontmatter from a file.
+If you have a file named `hello.md` with the following content:
+
+```markdown
+---
+title: How to use parse from file
+date: 2024-12-31 23:59 JST
+tags:
+- how-to
+- parse
+---
+
+# Hello, World!
+Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+```
+
+You can parse the file like this:
+
+```ruby
+Otterraft.parse_file('hello.md')
+# => { "title" => "How to use parse from file", "date" => "2024-12-31 23:59 JST", "tags" => ["how-to", "parse"] }
+```
 
 ## Contributing
 
-Bug reports and pull requests are welcome on GitHub at https://github.com/[USERNAME]/otterraft. This project is intended to be a safe, welcoming space for collaboration, and contributors are expected to adhere to the [code of conduct](https://github.com/[USERNAME]/otterraft/blob/main/CODE_OF_CONDUCT.md).
+Bug reports and pull requests are welcome on GitHub at https://github.com/ydah/otterraft. This project is intended to be a safe, welcoming space for collaboration, and contributors are expected to adhere to the [code of conduct](./CODE_OF_CONDUCT.md).
 
 ## License
 
-The gem is available as open source under the terms of the [MIT License](https://opensource.org/licenses/MIT).
+The gem is available as open source under the terms of the [MIT License](./LICENSE.txt).
 
 ## Code of Conduct
 
-Everyone interacting in the Otterraft project's codebases, issue trackers, chat rooms and mailing lists is expected to follow the [code of conduct](https://github.com/[USERNAME]/otterraft/blob/main/CODE_OF_CONDUCT.md).
+Everyone interacting in the Otterraft project's codebases, issue trackers, chat rooms and mailing lists is expected to follow the [code of conduct](./CODE_OF_CONDUCT.md).
