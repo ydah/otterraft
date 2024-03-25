@@ -1,0 +1,3 @@
+module YAML
+  def self.safe_load: (String|nil yaml, ?permitted_classes: untyped, ?permitted_symbols: untyped, ?aliases: bool, ?filename: String, ?fallback: untyped, ?symbolize_names: bool, ?freeze: bool, ?strict_integer: bool) -> Hash[String, String]
+end

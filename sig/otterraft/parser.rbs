@@ -1,0 +1,9 @@
+module Otterraft
+  class Parser
+    FRONTMATTER_REGEX: Regexp
+    @text: String
+
+    def initialize: (String text) -> void
+    def parse: () -> Hash[String, String]
+  end
+end

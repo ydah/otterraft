@@ -1,4 +1,4 @@
 module Otterraft
-  VERSION: String
-  # See the writing guide of rbs: https://github.com/ruby/rbs#guides
+  def self.parse: (String text) -> Hash[String, String]
+  def self.parse_file: (String pathname) -> Hash[String, String]
 end
