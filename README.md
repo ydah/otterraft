@@ -1,4 +1,4 @@
-# Otterraft
+# Otterraft [![Gem Version](https://badge.fury.io/rb/otterraft.svg)](https://badge.fury.io/rb/otterraft) [![CI](https://github.com/ydah/otterraft/actions/workflows/ci.yml/badge.svg)](https://github.com/ydah/otterraft/actions/workflows/ci.yml)
 
 Simple [YAML Frontmatter](https://pandoc.org/MANUAL.html#extension-yaml_metadata_block) parser for Ruby.
 
