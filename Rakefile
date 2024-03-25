@@ -5,4 +5,9 @@ require 'rspec/core/rake_task'
 
 RSpec::Core::RakeTask.new(:spec)
 
-task default: %i[spec]
+desc "steep check"
+task :steep do
+  sh "bundle exec steep check"
+end
+
+task default: %i[spec steep]
