@@ -10,6 +10,7 @@ module Otterraft
 
   def self.parse_file(pathname)
     raise "File not found: #{pathname}" unless File.exist?(pathname)
+
     Parser.new(File.read(pathname)).parse
   end
 end
