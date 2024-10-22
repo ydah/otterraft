@@ -29,7 +29,7 @@ RSpec.describe Otterraft::Parser do
       it "parses front matter" do
         expect(subject).to eq(
           "date" => "2021-01-01 12:00 JST",
-          "tags" => ["hello", "world", "ruby"],
+          "tags" => %w[hello world ruby],
           "title" => "Hello, World!"
         )
       end
@@ -52,7 +52,7 @@ RSpec.describe Otterraft::Parser do
       it "parses front matter" do
         expect(subject).to eq(
           "date" => "2021-01-01 12:00 JST",
-          "tags" => ["hello", "world", "ruby"],
+          "tags" => %w[hello world ruby],
           "title" => "Hello, World!"
         )
       end
