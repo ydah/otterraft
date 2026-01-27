@@ -68,6 +68,35 @@ Otterraft.parse_file('hello.md')
 # => { "title" => "How to use parse from file", "date" => "2024-12-31 23:59 JST", "tags" => ["how-to", "parse"] }
 ```
 
+### Options
+
+Otterraft supports several options to control the returned structure.
+
+```ruby
+Otterraft.parse(text, symbolize_keys: true)
+# => { title: "Hello, World!", date: "2021-01-01 12:00 JST", tags: ["hello", "world", "ruby"] }
+
+Otterraft.parse(text, format: :open_struct)
+# => #<OpenStruct title="Hello, World!", date="2021-01-01 12:00 JST", tags=["hello", "world", "ruby"]>
+```
+
+Available options:
+
+- `symbolize_keys`: Convert hash keys to symbols
+- `format`: Return format (`:hash` or `:open_struct`)
+- `multiple`: Parse multiple frontmatter blocks and return an array
+- `strict`: When `false`, return `nil` (or `[]` for `multiple: true`) if no frontmatter is found
+
+### Parsing With Body
+
+You can also parse the frontmatter and retrieve the remaining body.
+
+```ruby
+result = Otterraft.parse_with_body(text)
+result.frontmatter # => { "title" => "Hello, World!", ... }
+result.body        # => "# Hello, World!\nLorem ipsum..."
+```
+
 ## Contributing
 
 Bug reports and pull requests are welcome on GitHub at https://github.com/ydah/otterraft. This project is intended to be a safe, welcoming space for collaboration, and contributors are expected to adhere to the [code of conduct](./CODE_OF_CONDUCT.md).

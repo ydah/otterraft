@@ -1,0 +1,10 @@
+module Otterraft
+  class Result
+    attr_reader frontmatter: Hash[String | Symbol, untyped] | OpenStruct | Array[Hash[String | Symbol, untyped] | OpenStruct] | nil
+    attr_reader body: String
+    attr_reader raw: String
+
+    def initialize: (frontmatter: untyped, body: String, raw: String) -> void
+    def to_h: () -> Hash[Symbol, untyped]
+  end
+end

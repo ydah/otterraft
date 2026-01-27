@@ -1,0 +1,4 @@
+module Psych
+  class SyntaxError < ::SyntaxError
+  end
+end

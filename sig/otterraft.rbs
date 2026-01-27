@@ -1,4 +1,10 @@
 module Otterraft
-  def self.parse: (String text) -> Hash[String, String]
-  def self.parse_file: (String pathname) -> Hash[String, String]
+  def self.parse: (String text, ?symbolize_keys: bool, ?format: Symbol, ?multiple: bool, ?strict: bool) -> (Hash[String | Symbol, untyped] | OpenStruct | Array[Hash[String | Symbol, untyped] | OpenStruct] | nil)
+  def self.parse_file: (String pathname, ?symbolize_keys: bool, ?format: Symbol, ?multiple: bool, ?strict: bool) -> (Hash[String | Symbol, untyped] | OpenStruct | Array[Hash[String | Symbol, untyped] | OpenStruct] | nil)
+  def self.parse_with_body: (String text, ?symbolize_keys: bool, ?format: Symbol, ?multiple: bool, ?strict: bool) -> Result
+  def self.parse_file_with_body: (String pathname, ?symbolize_keys: bool, ?format: Symbol, ?multiple: bool, ?strict: bool) -> Result
+
+  private
+
+  def self.build_options: (Hash[Symbol, untyped] options) -> Options
 end

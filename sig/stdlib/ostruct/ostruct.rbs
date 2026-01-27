@@ -1,0 +1,15 @@
+class OpenStruct
+  def initialize: (?Hash[Symbol | String, untyped]? hash) -> void
+
+  def []: (Symbol | String) -> untyped
+  def []=: (Symbol | String, untyped) -> untyped
+
+  def to_h: () -> Hash[Symbol, untyped]
+  def to_json: (*untyped) -> String
+
+  def method_missing: (Symbol, *untyped) -> untyped
+
+  private
+
+  def new_ostruct_member!: (Symbol) -> Symbol
+end

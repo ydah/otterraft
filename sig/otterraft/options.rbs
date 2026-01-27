@@ -1,0 +1,13 @@
+module Otterraft
+  class Options
+    VALID_FORMATS: Array[Symbol]
+
+    attr_reader symbolize_keys: bool
+    attr_reader format: Symbol
+    attr_reader multiple: bool
+    attr_reader strict: bool
+
+    def initialize: (?symbolize_keys: bool, ?format: Symbol, ?multiple: bool, ?strict: bool) -> void
+    private def validate_format: (Symbol format) -> Symbol
+  end
+end

@@ -1,9 +1,24 @@
 module Otterraft
   class Parser
     FRONTMATTER_REGEX: Regexp
+    MULTI_DOCUMENT_REGEX: Regexp
     @text: String
+    @options: Options
 
-    def initialize: (String text) -> void
-    def parse: () -> Hash[String, String]
+    def initialize: (String text, ?Options options) -> void
+    def parse: () -> (Hash[String | Symbol, untyped] | OpenStruct | Array[Hash[String | Symbol, untyped] | OpenStruct] | nil)
+    def parse_with_body: () -> Result
+
+    private
+
+    def parse_single: () -> (Hash[String | Symbol, untyped] | OpenStruct | nil)
+    def parse_multiple: () -> Array[Hash[String | Symbol, untyped] | OpenStruct]
+    def load_and_transform: (String? content) -> (Hash[String | Symbol, untyped] | OpenStruct)
+    def transform_result: (Hash[untyped, untyped] hash) -> (Hash[String | Symbol, untyped] | OpenStruct)
+    def symbolize_keys_deep: (untyped obj) -> untyped
+    def to_open_struct: (Hash[Symbol | String, untyped] hash) -> OpenStruct
+    def handle_no_frontmatter: () -> nil
+    def handle_no_frontmatter_multiple: () -> Array[untyped]
+    def handle_no_frontmatter_with_body: () -> Result
   end
 end
