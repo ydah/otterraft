@@ -8,3 +8,14 @@
 /tmp/
 .rspec_status
 Gemfile.lock
+/.idea/
+/.vscode/
+.DS_Store
+/log/
+/log/*
+!/log/.keep
+/tmp/
+/tmp/*
+!/tmp/.keep
+/vendor/bundle/
+/vendor/cache/
